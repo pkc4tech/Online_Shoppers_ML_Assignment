@@ -9,6 +9,7 @@ This project compares five machine learning classification algorithms to predict
 An e-commerce website receives visitors who browse products, review pages, and sometimes leave without buying anything. The objective of this project is to predict whether a browsing session will lead to a purchase, using information about visitor behavior and browsing activity.
 
 This is a **binary classification** problem:
+
 - `Revenue = True` (1): a purchase occurred.
 - `Revenue = False` (0): no purchase occurred.
 
@@ -45,26 +46,26 @@ Since only about 15.5% of sessions end in purchases, accuracy alone is not enoug
 
 All five models are trained on the same training split and evaluated on the same **2,466-session test set**. The table below contains the results displayed by the Streamlit application.
 
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
-|---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | 0.8808 | 0.8828 | 0.7366 | 0.3586 | 0.4824 | 0.4592 |
-| Decision Tree | **0.8958** | **0.9137** | 0.7273 | 0.5236 | **0.6088** | **0.5604** |
-| KNN | 0.8731 | 0.8164 | 0.6927 | 0.3246 | 0.4421 | 0.4159 |
-| Naive Bayes (Gaussian) | 0.2729 | 0.7334 | 0.1726 | **0.9738** | 0.2933 | 0.1289 |
-| Support Vector Machine (SVM) | 0.8873 | 0.8824 | 0.7047 | 0.4686 | 0.5629 | 0.5149 |
+| ML Model Name                |   Accuracy |        AUC | Precision |     Recall |         F1 |        MCC |
+| ---------------------------- | ---------: | ---------: | --------: | ---------: | ---------: | ---------: |
+| Logistic Regression          |     0.8808 |     0.8828 |    0.7366 |     0.3586 |     0.4824 |     0.4592 |
+| Decision Tree                | **0.8958** | **0.9137** |    0.7273 |     0.5236 | **0.6088** | **0.5604** |
+| KNN                          |     0.8731 |     0.8164 |    0.6927 |     0.3246 |     0.4421 |     0.4159 |
+| Naive Bayes (Gaussian)       |     0.2729 |     0.7334 |    0.1726 | **0.9738** |     0.2933 |     0.1289 |
+| Support Vector Machine (SVM) |     0.8873 |     0.8824 |    0.7047 |     0.4686 |     0.5629 |     0.5149 |
 
 For precision, recall, and F1, the positive class is **purchase (`Revenue=True`)**. AUC is calculated using probability scores or, for SVM, decision scores.
 
 ### Observations about model performance
 
-| ML Model Name | Observation about model performance |
-|---|---|
-| Logistic Regression | Accuracy is 88.08%, but recall is only 35.86%. The model correctly identifies many non-purchases but misses a large number of actual purchases. |
-| Decision Tree | It has the highest accuracy (89.58%), AUC (0.9137), F1 (0.6088), and MCC (0.5604) among the five models. It gives the best overall result in this experiment. |
-| KNN | Accuracy is 87.31%, but recall is relatively low (32.46%). It performs below Decision Tree and SVM on identifying purchase sessions. |
-| Naive Bayes | Recall is very high (97.38%), but precision is only 17.26%. It predicts many sessions as purchases even when no purchase occurred, resulting in poor overall accuracy. |
-| Support Vector Machine | Accuracy is 88.73% and F1 is 0.5629. It performs better than Logistic Regression and KNN on purchase-class F1, but does not exceed Decision Tree. |
-| **Overall winner** | **Decision Tree** — it has the strongest combination of F1, MCC, AUC, and accuracy on this test set. |
+| ML Model Name          | Observation about model performance                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Logistic Regression    | Accuracy is 88.08%, but recall is only 35.86%. The model correctly identifies many non-purchases but misses a large number of actual purchases.                        |
+| Decision Tree          | It has the highest accuracy (89.58%), AUC (0.9137), F1 (0.6088), and MCC (0.5604) among the five models. It gives the best overall result in this experiment.          |
+| KNN                    | Accuracy is 87.31%, but recall is relatively low (32.46%). It performs below Decision Tree and SVM on identifying purchase sessions.                                   |
+| Naive Bayes            | Recall is very high (97.38%), but precision is only 17.26%. It predicts many sessions as purchases even when no purchase occurred, resulting in poor overall accuracy. |
+| Support Vector Machine | Accuracy is 88.73% and F1 is 0.5629. It performs better than Logistic Regression and KNN on purchase-class F1, but does not exceed Decision Tree.                      |
+| **Overall winner**     | **Decision Tree** — it has the strongest combination of F1, MCC, AUC, and accuracy on this test set.                                                                   |
 
 ### Conclusion
 
@@ -128,6 +129,6 @@ Open `http://localhost:8501` in the browser. Upload the provided **`test_data.cs
 
 ## Streamlit application link
 
-**Live app:** [Add the Streamlit Community Cloud URL after deployment]
+**Live app:** https://onlineshoppersmlassignment-4ersynnidfqvnyagflualn.streamlit.app/
 
 To deploy, connect the GitHub repository to [Streamlit Community Cloud](https://share.streamlit.io/), select the `main` branch and `app.py` as the entry point, then verify the application using `test_data.csv`.
